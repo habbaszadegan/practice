@@ -19,18 +19,27 @@ function addBookToLibrary() {
     
         let newBookEntry = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
 
+        for (book of myLibrary) {
+            if (book.title == newBookEntry.title) {
+                return;
+            }
+        }
+
         myLibrary.push(newBookEntry);
-        displayLibrary();
+        displayLibrary(newBookEntry);
     })
 }
 
-function displayLibrary() {
-    let filteredLibrary = myLibrary.filter(book => {
-
-    })
-    let mappedLibrary = myLibrary.map(book => {
+function displayLibrary(newBook) {
+    let filteredLibrary = myLibrary.filter((book) => book.title == newBook.title);
+    filteredLibrary.forEach((book, i) => {
         let newEntry = document.createElement('div');
-        newEntry.setAttribute('data')
+
+        if (book.index === undefined) {
+            book.index = i;
+        }
+
+        newEntry.setAttribute('data-book-index', book.index);
         newEntry.textContent = `${book.title} ${book.author} ${book.pages} ${book.read}`;
         document.body.appendChild(newEntry);
     })
