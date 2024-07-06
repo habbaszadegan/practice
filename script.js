@@ -16,6 +16,12 @@ function addBookToLibrary() {
         const authorInput = document.getElementById('author');
         const pagesInput = document.getElementById('pages');
         const readInput = document.getElementById('read');
+
+        if (readInput.value == 'on') {
+            readInput == 'Yes';
+        } else {
+            readInput == 'No';
+        }
     
         let newBookEntry = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
 
@@ -42,6 +48,7 @@ function displayLibrary(newBook) {
         newEntry.setAttribute('data-book-index', book.index);
         newEntry.textContent = `${book.title} ${book.author} ${book.pages} ${book.read}`;
         document.body.appendChild(newEntry);
+        removeBook(newEntry);
     })
 }
 
@@ -51,6 +58,15 @@ function runModal() {
     let submit = document.querySelector('.submit');
     newBookBtn.addEventListener('click', () => dialog.showModal());
     submit.addEventListener('click', () => dialog.close());
+}
+
+function removeBook(nwbk) {
+    let removeBtn = document.createElement('button');
+    removeBtn.addEventListener('click', () => {
+        nwbk.remove();
+        removeBtn.remove();
+    })
+    document.body.appendChild(removeBtn);
 }
 
 addBookToLibrary();
