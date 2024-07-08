@@ -16,11 +16,11 @@ function addBookToLibrary() {
         const authorInput = document.getElementById('author');
         const pagesInput = document.getElementById('pages');
         const readInput = document.getElementById('read');
-
+        
         if (readInput.value == 'on') {
-            readInput == 'Yes';
+            readInput.value = 'Yes';
         } else {
-            readInput == 'No';
+            readInput.value = 'No';
         }
     
         let newBookEntry = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
