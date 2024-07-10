@@ -71,3 +71,7 @@ function removeBook(nwbk) {
 
 addBookToLibrary();
 runModal();
+
+const obj = {
+    
+}
